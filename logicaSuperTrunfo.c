@@ -1,43 +1,102 @@
 #include <stdio.h>
 
-// Desafio Super Trunfo - Países
-// Tema 2 - Comparação das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de comparação de cartas de cidades. 
-// Siga os comentários para implementar cada parte do desafio.
 
-int main() {
-    // Definição das variáveis para armazenar as propriedades das cidades
-    // Você pode utilizar o código do primeiro desafio
+ int main() {
+   
+    
+   struct carta {
+
+     char estado;
+     char codigo;
+     char nome;
+     int populacao;
+     float area;
+     float pib;
+     int pontos_turisticos;
+     float densidade;
+     float pib_per_capita;
+
+   };
+
+    struct carta carta1, carta2;
+
+    //entrada de dados carta 1
+    printf("===cadastro da carta 1 ===\n");
+    printf("Estado: ");
+    scanf("%[^\n]", carta1.estado);
+
+    printf("codigo da carta: ");
+    scanf("%[^\n]", carta1.codigo);
+
+    printf("Nome da cidade: ");
+    scanf(" %[^\n]", carta1.nome);
+  
+    printf("Populacao: ");
+    scanf("%d", &carta1.populacao);
+
+    printf("Area (km2): ");
+    scanf("%f", &carta1.area);
+   
+    printf("PIB (em bilhões): ");
+    scanf("%f", &carta1.pib);
+
+    printf("Número de pontos turísticos: ");
+    scanf("%d", &carta1.pontos_turisticos);
+ 
+     
+    //soma
+    carta1.densidade = carta1.populacao / carta1.area;
+    carta1.pib_per_capita = carta1.pib / carta1.populacao;
 
     
-    // Cadastro das Cartas:
-    // Implemente a lógica para solicitar ao usuário que insira os dados das cidades
-    // utilizando a função scanf para capturar as entradas.
-    // utilize o código do primeiro desafio
+   //entrada de dados carta 2
+    printf("\n=== cadastro da carta 2 ===\n");
+    printf("Estado: ");
+    scanf(" %[^\n]", carta2.estado);
 
-    // Exemplo:
-    // printf("Digite o código da cidade: ");
-    // scanf("%s", codigo);
-    // 
-    // (Repita para cada propriedade)
+    printf("Codigo da carta: ");
+    scanf(" %[^\n]", carta2.codigo);
 
-    // Comparação de Cartas:
-    // Desenvolva a lógica de comparação entre duas cartas.
-    // Utilize estruturas de decisão como if, if-else para comparar atributos como população, área, PIB, etc.
+    printf("Nome da cidade: ");
+    scanf(" %[^\n]", carta2.nome);
 
-    // Exemplo:
-    // if (populacaoA > populacaoB) {
-    //     printf("Cidade 1 tem maior população.\n");
-    // } else {
-    //     printf("Cidade 2 tem maior população.\n");
-    // }
+    printf("Populacao: ");
+    scanf("%d", &carta2.populacao);
 
-    // Exibição dos Resultados:
-    // Após realizar as comparações, exiba os resultados para o usuário.
-    // Certifique-se de que o sistema mostre claramente qual carta venceu e com base em qual atributo.
+    printf("Area (km2): ");
+    scanf("%f", &carta2.area);
 
-    // Exemplo:
-    // printf("A cidade vencedora é: %s\n", cidadeVencedora);
+    printf("PIB (em bilhões): ");
+    scanf("%f", &carta2.pib);
 
+    printf("Número de pontos turísticos: ");
+    scanf("%d", &carta2.pontos_turisticos);
+
+
+    //soma
+    carta2.densidade = carta2.populacao / carta2.area;
+    carta2.pib_per_capita = carta2.pib / carta2.populacao;
+ 
+    //apresentação das somas
+    printf("\n=== Informações Calculadas ===\n");
+    printf("%s - Densidade: %.2f | PIB per capita: %.2f\n", carta1.nome, carta1.densidade, carta1.pib_per_capita);
+    printf("%s - Densidade: %.2f | PIB per capita: %.2f\n", carta2.nome, carta2.densidade, carta2.pib_per_capita);
+ 
+
+    //comparação
+    printf("\n=== Comparação de cartas (Atributo: PIB per capita) ===\n");
+    printf("Carta 1 - %s (%s): %.2f\n", carta1.nome, carta1.estado, carta1.pib_per_capita);
+    printf("Carta 2 - %s (%s): %.2f\n", carta2.nome, carta2.estado, carta2.pib_per_capita);
+
+
+    if (carta1.pib_per_capita > carta2.pib_per_capita) {
+        printf("\nResultado: Carta 1 (%s) venceu!\n", carta1.nome);
+    } else if (carta2.pib_per_capita > carta1.pib_per_capita) {
+        printf("\nResultado: Carta 2 (%s) venceu!\n", carta2.nome);
+    } else {
+        printf("\nResultado: Empate!\n");
+    }
+
+    
     return 0;
 }
